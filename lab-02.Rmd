@@ -15,20 +15,46 @@ library(tidyverse)
 plastic_waste <- read.csv("data/plastic-waste.csv")
 ```
 
-Data Visualization (Before starting exercise)
+Data Visualization: (Before starting exercise: For my own practice and to look back on later)
+
+```{r histogram of distribution of plastic waste per capita}
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)
+```
+
+```{r filter data for countries > 3.5kg/person: to identify the outlier}
+plastic_waste %>%
+  filter(plastic_waste_per_cap > 3.5)
+```
+
+
 ## Exercises
 
 ### Exercise 1
 
 ```{r plastic-waste-continent}
-# insert code here
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2) + 
+  facet_wrap(~continent)
+```
 ```
 
 ### Exercise 2
 
-```{r plastic-waste-density}
-# insert code here
+```{r plastic-waste-density, better alpha}
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    color = continent,
+    fill = continent
+  )
+) +
+  geom_density(alpha = 0.3)
 ```
+
+2.2. The reason why we defined 'color' and 'fill' under mapping aesthetics of the plot is because these are characteristics  that are based on (vary by) the values in the data (for example here, different color and fill show each continent). On the other hand, for the alpha, this is a characteristics that is not based on the values of the data for our current purpose (we are changing the transparency level of the fill color to help with the overlapping colors of the continents making it hard to effectively visualize the data). So, we define it here a a characteristic of the plotting geom (setting).
+
 
 ### Exercise 3
 
