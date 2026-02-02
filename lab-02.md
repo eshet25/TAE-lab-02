@@ -1,32 +1,29 @@
----
-title: "Lab 02 - Plastic waste"
-author: "Tsion"
-date: "01/31/2026"
-output: github_document
----
+Lab 02 - Plastic waste
+================
+Tsion
+01/31/2026
 
 ## Load packages and data
 
-```{r load-packages, message=FALSE}
+``` r
 library(tidyverse) 
 ```
 
-```{r load-data, message=FALSE}
+``` r
 plastic_waste <- read.csv("data/plastic-waste.csv")
 ```
 
-Data Visualization (Before starting exercise)
-## Exercises
+Data Visualization (Before starting exercise) \## Exercises
 
 ### Exercise 1
 
-```{r plastic-waste-continent}
+``` r
 # insert code here
 ```
 
 ### Exercise 2
 
-```{r plastic-waste-density}
+``` r
 # insert code here
 ```
 
@@ -34,7 +31,7 @@ Data Visualization (Before starting exercise)
 
 Remove this text, and add your answer for Exercise 3 here.
 
-```{r plastic-waste-violin}
+``` r
 # insert code here
 ```
 
@@ -42,19 +39,19 @@ Remove this text, and add your answer for Exercise 3 here.
 
 Remove this text, and add your answer for Exercise 4 here.
 
-```{r plastic-waste-mismanaged}
+``` r
 # insert code here
 ```
 
-```{r plastic-waste-mismanaged-continent}
+``` r
 # insert code here
 ```
 
-```{r plastic-waste-population-total}
+``` r
 # insert code here
 ```
 
-```{r plastic-waste-population-coastal}
+``` r
 # insert code here
 ```
 
@@ -62,8 +59,6 @@ Remove this text, and add your answer for Exercise 4 here.
 
 Remove this text, and add your answer for Exercise 5 here.
 
-```{r recreate-viz}
+``` r
 # insert code here
 ```
-
-
