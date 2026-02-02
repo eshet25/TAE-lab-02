@@ -251,8 +251,35 @@ Here as well, I am not sure if I see a clear/strong linear assosciation. Most of
 
 ### Exercise 5
 
+*Note: group =1, makes one smooth line for all continents (instead of separate lines)
+
+*se = TRUe, shows the confidence interval around the smooth line
+
 ```{r recreate-viz}
-# insert code here
+plastic_waste %>%
+  filter(plastic_waste_per_cap > 3.5)
+ggplot (
+data = plastic_waste,
+mapping = aes(
+x = coastal_pop/ total_pop,
+y = plastic_waste_per_cap,
+color = continent
+)
+) + 
+geom_point () +
+geom_smooth(
+aes (group = 1),
+color = "black",
+se = TRUE
+) +
+scale_color_viridis_d() +
+coord_cartesian(ylim = c(0,0.7)) +
+labs (
+  title = "Plastic Waste vs coastal population proportion",
+    subtitle = "by continent",
+    x = "Coastal population proportion (Coastal/ total population",
+    y = "Plastic waste per capita (kg/day)",
+    color = "Continents") 
 ```
 
 

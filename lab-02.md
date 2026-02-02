@@ -266,7 +266,40 @@ labs (
 ![](lab-02_files/figure-gfm/plastic-waste-population-total-1.png)<!-- -->
 
 There doesn’t seem to be a clear/strong linear relationship, it’s not
-very clear since they are clustered very much.
+very clear since they are clustered very much. We can try to do facet to
+see better
+
+``` r
+ggplot (
+data = plastic_waste,
+mapping = aes(
+x = plastic_waste_per_cap,
+y = total_pop,
+color = continent
+)
+) + 
+geom_point(size = 1)  +
+facet_wrap(~ continent) +
+labs (
+  title = "Scatterplot: Plastic Waste per capita vs Total Population",
+    subtitle = "by continent",
+    x = "Plastic waste per capita (kg/day)",
+    y = "Total Population")
+```
+
+    ## Warning: Removed 61 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-total%20facet-1.png)<!-- -->
+
+I still can’t confidetntly say I can see a very clear linear
+relationship. In Asia, we can see a couple of countries that are in the
+higer population range (\>1,000,000,000), but are still showing low
+plastic waste per capita. Most countries in each continent are clustered
+at the lower values of plastic waste per capita, and generally in the
+population range of \< 500,000,000. In North America, it looks like most
+of the countries are concentrated in the very low total population range
+(0e+00).
 
 ``` r
 ggplot (
@@ -290,8 +323,85 @@ labs (
 
 ![](lab-02_files/figure-gfm/plastic-waste-population-coastal-1.png)<!-- -->
 
+``` r
+ggplot (
+data = plastic_waste,
+mapping = aes(
+x = plastic_waste_per_cap,
+y = coastal_pop,
+color = continent
+)
+) + 
+geom_point() +
+facet_wrap(~ continent) +
+labs (
+  title = "Scatterplot: Plastic Waste per capita vs Coastal Population",
+    subtitle = "by continent",
+    x = "Plastic waste per capita (kg/day)",
+    y = "Coastal Population")
+```
+
+    ## Warning: Removed 51 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-coastal%20facet-1.png)<!-- -->
+
+Here as well, I am not sure if I see a clear/strong linear assosciation.
+Most of the countries are clustered around the lower pastic per waste
+capita values, and with generally low coastal population. But in Asia,
+we see a number of countries that have high coastal population but are
+still in the lower range for plastic waste per capita.
+
 ### Exercise 5
 
+\*Note: group =1, makes one smooth line for all continents (instead of
+separate lines)
+
+\*se = TRUe, shows the confidence interval around the smooth line
+
 ``` r
-# insert code here
+plastic_waste %>%
+  filter(plastic_waste_per_cap > 3.5)
 ```
+
+    ##   code              entity     continent year gdp_per_cap plastic_waste_per_cap
+    ## 1  TTO Trinidad and Tobago North America 2010    31260.91                   3.6
+    ##   mismanaged_plastic_waste_per_cap mismanaged_plastic_waste coastal_pop
+    ## 1                             0.19                    94066     1358433
+    ##   total_pop
+    ## 1   1341465
+
+``` r
+ggplot (
+data = plastic_waste,
+mapping = aes(
+x = coastal_pop/ total_pop,
+y = plastic_waste_per_cap,
+color = continent
+)
+) + 
+geom_point () +
+geom_smooth(
+aes (group = 1),
+color = "black",
+se = TRUE
+) +
+scale_color_viridis_d() +
+coord_cartesian(ylim = c(0,0.7)) +
+labs (
+  title = "Plastic Waste vs coastal population proportion",
+    subtitle = "by continent",
+    x = "Coastal population proportion (Coastal/ total population",
+    y = "Plastic waste per capita (kg/day)",
+    color = "Continents") 
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+
+    ## Warning: Removed 61 rows containing non-finite outside the scale range
+    ## (`stat_smooth()`).
+
+    ## Warning: Removed 61 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
