@@ -292,9 +292,9 @@ labs (
 
 ![](lab-02_files/figure-gfm/plastic-waste-population-total%20facet-1.png)<!-- -->
 
-I still can’t confidetntly say I can see a very clear linear
+I still can’t confidently say I can see a very clear linear
 relationship. In Asia, we can see a couple of countries that are in the
-higer population range (\>1,000,000,000), but are still showing low
+higher population range (\>1,000,000,000), but are still showing low
 plastic waste per capita. Most countries in each continent are clustered
 at the lower values of plastic waste per capita, and generally in the
 population range of \< 500,000,000. In North America, it looks like most
@@ -357,19 +357,7 @@ still in the lower range for plastic waste per capita.
 \*Note: group =1, makes one smooth line for all continents (instead of
 separate lines)
 
-\*se = TRUe, shows the confidence interval around the smooth line
-
-``` r
-plastic_waste %>%
-  filter(plastic_waste_per_cap > 3.5)
-```
-
-    ##   code              entity     continent year gdp_per_cap plastic_waste_per_cap
-    ## 1  TTO Trinidad and Tobago North America 2010    31260.91                   3.6
-    ##   mismanaged_plastic_waste_per_cap mismanaged_plastic_waste coastal_pop
-    ## 1                             0.19                    94066     1358433
-    ##   total_pop
-    ## 1   1341465
+\*se = TRUE, shows the confidence interval around the smooth line
 
 ``` r
 ggplot (

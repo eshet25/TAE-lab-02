@@ -209,7 +209,7 @@ labs (
     y = "Total Population")
 ```
 
-I still can't confidetntly say I can see a very clear linear relationship. In Asia, we can see a couple of countries that are in the higer population range (>1,000,000,000), but are still showing low plastic waste per capita. Most countries in each continent are clustered at the lower values of plastic waste per capita, and generally in the population range of < 500,000,000. In North America, it looks like most of the countries are concentrated in the very low total population range (0e+00). 
+I still can't confidently say I can see a very clear linear relationship. In Asia, we can see a couple of countries that are in the higher population range (>1,000,000,000), but are still showing low plastic waste per capita. Most countries in each continent are clustered at the lower values of plastic waste per capita, and generally in the population range of < 500,000,000. In North America, it looks like most of the countries are concentrated in the very low total population range (0e+00). 
 
 ```{r plastic-waste-population-coastal}
 ggplot (
@@ -253,11 +253,9 @@ Here as well, I am not sure if I see a clear/strong linear assosciation. Most of
 
 *Note: group =1, makes one smooth line for all continents (instead of separate lines)
 
-*se = TRUe, shows the confidence interval around the smooth line
+*se = TRUE, shows the confidence interval around the smooth line
 
 ```{r recreate-viz}
-plastic_waste %>%
-  filter(plastic_waste_per_cap > 3.5)
 ggplot (
 data = plastic_waste,
 mapping = aes(
