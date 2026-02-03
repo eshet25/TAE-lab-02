@@ -42,6 +42,25 @@ plastic_waste %>%
 
 ### Exercise 1
 
+It was actually quite a surpirse for me to see Trinidad and Tobago as
+the outlier here, especially comparing it to larger and more industrial
+countries like China, and India. I looked it up to and found this Forbes
+article published in 2019:
+<https://www.forbes.com/sites/daphneewingchow/2019/09/20/caribbean-islands-are-the-biggest-plastic-polluters-per-capita-in-the-world/>.
+
+It mentioned that majority of the Carribean countries are ranked amongst
+the countries with highest plastic pollution (10 Carribean countries
+ranked out of the top 30 global polluters per capita), with Trinidad and
+Tobago being the first one. The main issue lies in inadequate waste
+management since the small populations Trinidad and Tobago combined with
+the high consumption increases their rates much higher. They produce
+much more plastic waste per person than any other country (0.19 kg per
+person per day. Most of their plastic waste is being disposed inproperly
+to the ocean, which results in “more marine plastic originating in
+Trinidad & Tobago (per capita) than 98% of the countries in the world.”
+So, unfortunately I’d say, the data we see here is certainly showing
+real phenomenon rather than an error.
+
 ``` r
 ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
   geom_histogram(binwidth = 0.2) + 
@@ -59,25 +78,33 @@ ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
 
 ![](lab-02_files/figure-gfm/plastic-waste-continent-1.png)<!-- -->
 
+It looks like the plastic waste per capita levels are mostly on the
+lower levels for most of the countries. Africa seems to have the lowest
+plastic waste skewed to the right. Oceania and South America also show
+generally low-to-moderate levels of plastic waste per capita, but their
+histograms are less dense, probably because they have less countries.
+Asia, and Europe also show lower-to-moderate levels. North American
+countries are also generally low-to-moderate with the Trinidad and
+Tobago as the higher outlier.
 
-    ### Exercise 2
+### Exercise 2
 
-
-    ``` r
-    ggplot(
-      data = plastic_waste,
-      mapping = aes(
-        x = plastic_waste_per_cap,
-        color = continent,
-        fill = continent
-      )
-    ) +
-      geom_density(alpha = 0.3) + 
-      labs (
-      title = "Distribution of plastic waste per capita",
-        subtitle = "by continent",
-        x = "Plastic waste per capita (kg/day)",
-        y = "Countries (density)")
+``` r
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    color = continent,
+    fill = continent
+  )
+) +
+  geom_density(alpha = 0.3) + 
+  labs (
+  title = "Distribution of plastic waste per capita",
+    subtitle = "by continent",
+    x = "Plastic waste per capita (kg/day)",
+    y = "Countries (density)")
+```
 
     ## Warning: Removed 51 rows containing non-finite outside the scale range
     ## (`stat_density()`).
@@ -381,7 +408,8 @@ labs (
     subtitle = "by continent",
     x = "Coastal population proportion (Coastal/ total population",
     y = "Plastic waste per capita (kg/day)",
-    color = "Continents") 
+    color = "Continents") +
+    theme_minimal()
 ```
 
     ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
